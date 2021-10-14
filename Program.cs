@@ -19,7 +19,7 @@ namespace ConsoleApp1
         //private const string blobStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=fdaasperfehcheckpoints;AccountKey=A8UsjTFC9VMsh2W84vQHwK2XsjLlR7GwrgNQ5+oHftUV5Q5Eo4cp9uxNQjL802F4XTnHTruxgRKIIkpMVR9c4w==;EndpointSuffix=core.windows.net";
 
         //private const string blobContainerName = "hackathon";
-        private const string connectionString = "Endpoint=http://localhost/;";// SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly="; 
+        private const string connectionString = "Endpoint=http://localhost/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly="; 
         private const string eventHubName = "hackathon";
 
 
@@ -42,15 +42,17 @@ namespace ConsoleApp1
                 Console.WriteLine("Hello2");
 
                 // Add events to the batch. An event is a represented by a collection of bytes and metadata. 
-                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First event")));
-                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second event")));
-                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Third event")));
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("A")));
+                //eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second event")));
+                //eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Third event")));
 
                 // Use the producer client to send the batch of events to the event hub
                 Console.WriteLine("going to sleep");
-                //Thread.Sleep(10000);
+                Thread.Sleep(10000);
                 await producerClient.SendAsync(eventBatch);
                 Console.WriteLine("A batch of 3 events has been published.");
+            
+            
             }
 
             /*
